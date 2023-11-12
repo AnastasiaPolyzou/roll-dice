@@ -9,33 +9,46 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h> 
+#include <stdbool.h>
 
 int main() {
    int player1_score=0;
    int player2_score=0;
    int rounds=0;
+   int choice;
    
    srand(time(0)); //realtime
    
-   while(1) {
-       int choice;
-       printf("Welcome in roll dice game \n");
+   char player1_name[20];
+   char player2_name[20]; 
+   bool namesEntered = false;
+    
+    
+     printf("Welcome in roll dice game \n");
        printf("1. Begin new round: \n");
        printf("0. Exit from game: \n");
        scanf("%d" ,&choice);
+   
+   
+   while(1) {
+      
+       
        
          if(choice == 0) {
            break;
        
         } else if(choice == 1) {
-           char player1_name[20];
-           char player2_name[20];
+           if(!namesEntered) { 
+           
            
            printf("Player 1 please enter your name: \n");
            scanf("%s" ,player1_name);
            
            printf("Player 2 please enter your name: \n");
            scanf("%s" ,player2_name);
+           
+           namesEntered = true;
+           }
            
            int player1_roll=rand() % 10+1; // random number from 1-10
            int player2_roll=rand() % 10+1;
@@ -47,12 +60,12 @@ int main() {
            //increase score and rounds must be 
         
            if(player1_roll>player2_roll) {
-               printf("%s this round win goes to: \n" ,player1_name);
+               printf("this round win goes to: %s \n" ,player1_name);
                
                player1_score++;
            
            } else if(player1_roll<player2_roll) {
-               printf("%s this round win goes to: \n" ,player2_name);
+               printf("this round win goes to: %s \n" ,player2_name);
                
                player2_score++;
            
@@ -66,21 +79,17 @@ int main() {
            printf("%s: %d\n", player1_name, player1_score);
            printf("%s: %d\n", player2_name, player2_score);
            
-           if(player1_score>=5 || player2_score>=5) {
-               printf("The winner is: %s\n" ,player1_score>player2_score ? player1_name : player2_name);
+           if(player1_score == 5 || player2_score == 5) {
+               printf("\n The winner is: %s after %d rounds.\n" , (player1_score ==5) ? player1_name : player2_name, rounds);
                break; // exit when you have the winner in 5 wins  
-           } else {
-               printf("Not right choice please try again. \n");
            }
-           
-           
+        }   
         
+        
+   }   
+        return 0;
+           
+   }      
            
            
-           
-           
-       }
-   }
-
-    return 0;
-}
+    
