@@ -70,12 +70,12 @@ int main() {
            //increase score and rounds must be 
            
            if(player1_total>player2_total) {
-               printf("this round win goes to: %s \n" ,player1_name);
+               printf("This round win goes to: %s \n" ,player1_name);
                
                player1_score++;
            
            } else if(player1_total<player2_total) {
-               printf("this round win goes to: %s \n" ,player2_name);
+               printf("This round win goes to: %s \n" ,player2_name);
                
                player2_score++;
            
