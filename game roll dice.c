@@ -11,6 +11,10 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <time.h> 
 #include <stdbool.h>
 
+int rolldice() {
+    return (rand() % 10) +1; // dice 1 from 10
+}
+
 int main() {
    int player1_score=0;
    int player2_score=0;
@@ -21,7 +25,7 @@ int main() {
    
    char player1_name[20];
    char player2_name[20]; 
-   bool namesEntered = false;
+   bool namesentered = false; // no put a lot of times the name of each player
     
     
      printf("Welcome in roll dice game \n");
@@ -38,7 +42,7 @@ int main() {
            break;
        
         } else if(choice == 1) {
-           if(!namesEntered) { 
+           if(!namesentered) { 
            
            
            printf("Player 1 please enter your name: \n");
@@ -47,24 +51,30 @@ int main() {
            printf("Player 2 please enter your name: \n");
            scanf("%s" ,player2_name);
            
-           namesEntered = true;
+           namesentered = true;
            }
            
-           int player1_roll=rand(% 10+)1; // random number from 1-10
-           int player2_roll=rand(% 10+)1;
+           int player1_roll1=rolldice();
+           int player1_roll2=rolldice();
+           int player2_roll1=rolldice();
+           int player2_roll2=rolldice();
            
-           printf("%s roll %d\n" , player1_name , player1_roll);
-           printf("%s roll %d\n" , player2_name , player2_roll);
+           printf("%s roll %d and %d\n" , player1_name , player1_roll1,  player1_roll2);
+           printf("%s roll %d and %d\n" , player2_name , player2_roll1, player2_roll2);
            
+           int player1_total=player1_roll1+player1_roll2;
+           int player2_total=player2_roll1+player2_roll2; // total dice 
+          
            //must be print rolls and now to return dice to win
+          
            //increase score and rounds must be 
-        
-           if(player1_roll>player2_roll) {
+           
+           if(player1_total>player2_total) {
                printf("this round win goes to: %s \n" ,player1_name);
                
                player1_score++;
            
-           } else if(player1_roll<player2_roll) {
+           } else if(player1_total<player2_total) {
                printf("this round win goes to: %s \n" ,player2_name);
                
                player2_score++;
@@ -90,6 +100,9 @@ int main() {
         return 0;
            
    }      
+           
+           
+    
            
            
     
