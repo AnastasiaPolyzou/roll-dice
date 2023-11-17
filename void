@@ -1,0 +1,106 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> 
+#include <stdbool.h>
+
+int rolldice() {
+    return (rand() % 10) +1; // dice 1 from 10
+}
+// effort with void
+void printroundresults(char playername[],int roll1,int roll2) {
+    printf("%s roll %d and %d (total: %d)\n", playername , roll1 , roll2 ,roll1+roll2);
+}
+ void printscore(char player1_name[], int player1_score , char player2_name[20], int player2_score) {
+     printf("Score: \n");
+     printf("%s: %d\n" , player1_name, player1_score);
+     printf("%s: %d\n" , player2_name, player2_score);
+     
+ }
+
+int main() {
+   int player1_score=0;
+   int player2_score=0;
+   int rounds=0;
+   int choice;
+   
+   srand(time(0)); //realtime
+   
+   char player1_name[20];
+   char player2_name[20]; 
+   bool namesentered = false; // no put a lot of times the name of each player
+    
+    
+     printf("Welcome in roll dice game \n");
+       printf("1. Begin new round: \n");
+       printf("0. Exit from game: \n");
+       scanf("%d" ,&choice);
+   
+   
+   while(1) {
+      
+       
+       
+         if(choice == 0) {
+           break;
+       
+        } else if(choice == 1) {
+           if(!namesentered) { 
+           
+           
+           printf("Player 1 please enter your name: \n");
+           scanf("%s" ,player1_name);
+           
+           printf("Player 2 please enter your name: \n");
+           scanf("%s" ,player2_name);
+           
+           namesentered = true;
+           }
+           
+           int player1_roll1=rolldice();
+           int player1_roll2=rolldice();
+           int player2_roll1=rolldice();
+           int player2_roll2=rolldice();
+           
+          printroundresults(player1_name,player1_roll1,player1_roll2);
+          printroundresults(player2_name,player2_roll1,player2_roll2);
+          
+           
+           int player1_total=player1_roll1+player1_roll2;
+           int player2_total=player2_roll1+player2_roll2; // total dice 
+          
+           //must be print rolls and now to return dice to win
+          
+           //increase score and rounds must be 
+           
+           if(player1_total>player2_total) {
+               printf("This round win goes to: %s \n" ,player1_name);
+               
+               player1_score++;
+           
+           } else if(player1_total<player2_total) {
+               printf("This round win goes to: %s \n" ,player2_name);
+               
+               player2_score++;
+           
+           } else {
+               printf("This round is a draw. \n"); //if rand give the same number player1_roll=player2_roll
+           }
+           
+           rounds++; // mandate to increase rounds
+           
+           printf("Score after the round %d: \n" ,rounds);
+           printscore(player1_name, player1_score, player2_name, player2_score);
+           
+           if(player1_score == 5 || player2_score == 5) {
+               printf("\n The winner is: %s after %d rounds.\n" , (player1_score ==5) ? player1_name : player2_name, rounds);
+               break; // exit when you have the winner in 5 wins  
+           }
+        }   
+        
+        
+   }   
+        return 0;
+           
+   }      
+           
