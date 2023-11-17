@@ -50,8 +50,8 @@ int main() {
            namesEntered = true;
            }
            
-           int player1_roll=rand() % 10+1; // random number from 1-10
-           int player2_roll=rand() % 10+1;
+           int player1_roll=rand(% 10+)1; // random number from 1-10
+           int player2_roll=rand(% 10+)1;
            
            printf("%s roll %d\n" , player1_name , player1_roll);
            printf("%s roll %d\n" , player2_name , player2_roll);
