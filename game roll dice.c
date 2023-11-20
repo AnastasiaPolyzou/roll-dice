@@ -10,6 +10,12 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdlib.h>
 #include <time.h> 
 #include <stdbool.h>
+void Enter() {
+    printf("Congrats! Press Enter for tha next round");
+    while(getchar() != '\n');
+    getchar(); // lots of Enter
+    // press enter to Continue in the next round
+}
 
 int rolldice() {
     return (rand() % 10) +1; // dice 1 from 10
@@ -28,7 +34,7 @@ int main() {
    bool namesentered = false; // no put a lot of times the name of each player
     
     
-     printf("Welcome in roll dice game \n");
+       printf("Welcome in roll dice game \n");
        printf("1. Begin new round: \n");
        printf("0. Exit from game: \n");
        scanf("%d" ,&choice);
@@ -59,11 +65,13 @@ int main() {
            int player2_roll1=rolldice();
            int player2_roll2=rolldice();
            
-           printf("%s roll %d and %d\n" , player1_name , player1_roll1,  player1_roll2);
-           printf("%s roll %d and %d\n" , player2_name , player2_roll1, player2_roll2);
-           
            int player1_total=player1_roll1+player1_roll2;
            int player2_total=player2_roll1+player2_roll2; // total dice 
+           
+           printf("%s roll %d and %d with (total:%d)\n" , player1_name , player1_roll1,  player1_roll2,(player1_total));
+           printf("%s roll %d and %d with (total:%d)\n" , player2_name , player2_roll1, player2_roll2, (player2_total));
+           
+           
           
            //must be print rolls and now to return dice to win
           
@@ -88,6 +96,8 @@ int main() {
            printf("Score after the round %d: \n" ,rounds);
            printf("%s: %d\n", player1_name, player1_score);
            printf("%s: %d\n", player2_name, player2_score);
+
+           Enter();
            
            if(player1_score == 5 || player2_score == 5) {
                printf("\n The winner is: %s after %d rounds.\n" , (player1_score ==5) ? player1_name : player2_name, rounds);
