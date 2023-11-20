@@ -4,6 +4,11 @@
 #include <time.h> 
 #include <stdbool.h>
 
+void Enter() {
+    printf("Congrats! Press Enter for the next round");
+    while(getchar() != '\n');
+    getchar();
+}
 int rolldice() {
     return (rand() % 10) +1; // dice 1 from 10
 }
@@ -91,6 +96,8 @@ int main() {
            
            printf("Score after the round %d: \n" ,rounds);
            printscore(player1_name, player1_score, player2_name, player2_score);
+           
+           Enter();
            
            if(player1_score == 5 || player2_score == 5) {
                printf("\n The winner is: %s after %d rounds.\n" , (player1_score ==5) ? player1_name : player2_name, rounds);
